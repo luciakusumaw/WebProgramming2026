@@ -1,135 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>SIMPUS-Mini | Book List</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SIMPUS-Mini | Book List</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
-    <header>
-        <h1>SIMPUS-Mini</h1>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="list.html">Book List</a></li>
-                <li><a href="add.html">Add Book</a></li>
-                <li><a href="../members/list.html">Member List</a></li>
-                <li><a href="../members/add.html">Add Member</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section>
-            <h2>Book List</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Year</th>
-                        <th>Stock</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Laskar Pelangi</td>
-                        <td>Andrea Hirata</td>
-                        <td>2005</td>
-                        <td>4</td>
-                        <td>
-                            <button type="button">Edit</button>
-                            <button type="button" class="btn-details">Details</button>
-                            <button type="button">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Bumi Manusia</td>
-                        <td>Pramoedya Ananta Toer</td>
-                        <td>1980</td>
-                        <td>2</td>
-                        <td>
-                            <button type="button">Edit</button>
-                            <button type="button" class="btn-details">Details</button>
-                            <button type="button">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Negeri 5 Menara</td>
-                        <td>Ahmad Fuadi</td>
-                        <td>2009</td>
-                        <td>0</td>
-                        <td>
-                            <button type="button">Edit</button>
-                            <button type="button" class="btn-details">Details</button>
-                            <button type="button">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Filosofi Teras</td>
-                        <td>Henry Manampiring</td>
-                        <td>2018</td>
-                        <td>5</td>
-                        <td>
-                            <button type="button">Edit</button>
-                            <button type="button" class="btn-details">Details</button>
-                            <button type="button">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Ronggeng Dukuh Paruk</td>
-                        <td>Ahmad Tohari</td>
-                        <td>1982</td>
-                        <td>1</td>
-                        <td>
-                            <button type="button">Edit</button>
-                            <button type="button" class="btn-details">Details</button>
-                            <button type="button">Delete</button>
-                        </td>
-                    </tr>
+  <header>
+    <h1>SIMPUS-Mini</h1>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-toggle-label">&#9776;</label>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="list.html">Book List</a></li>
+        <li><a href="add.html">Add Book</a></li>
+        <li><a href="../members/list.html">Member List</a></li>
+        <li><a href="../members/add.html">Add Member</a></li>
+      </ul>
+    </nav>
+  </header>
 
-                    <tr>
-                        <td>Cantik Itu Luka</td>
-                        <td>Eka Kurniawan</td>
-                        <td>2002</td>
-                        <td>3</td>
-                        <td>
-                            <button type="button">Edit</button>
-                            <button type="button" class="btn-details">Details</button>
-                            <button type="button">Delete</button>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td>Hujan</td>
-                        <td>Tere Liye</td>
-                        <td>2016</td>
-                        <td>6</td>
-                        <td>
-                            <button type="button">Edit</button>
-                            <button type="button" class="btn-details">Details</button>
-                            <button type="button">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Laut Bercerita</td>
-                        <td>Leila S. Chudori</td>
-                        <td>2017</td>
-                        <td>2</td>
-                        <td>
-                            <button type="button">Edit</button>
-                            <button type="button" class="btn-details">Details</button>
-                            <button type="button">Delete</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-    </main>
+  <main>
+    <section>
+      <h2>Book List</h2>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Category</th>
+              <th>Stock</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>BK001</td>
+              <td>Pemrograman Web Dasar</td>
+              <td>Ahmad Dahlan</td>
+              <td>Computer Science</td>
+              <td>5</td>
+              <td>
+                <button type="button">Edit</button>
+                <button type="button">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>BK002</td>
+              <td>Struktur Data dan Algoritma</td>
+              <td>Budi Santoso</td>
+              <td>Computer Science</td>
+              <td>3</td>
+              <td>
+                <button type="button">Edit</button>
+                <button type="button">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>BK003</td>
+              <td>Basis Data Relasional</td>
+              <td>Citra Dewi</td>
+              <td>Database</td>
+              <td>4</td>
+              <td>
+                <button type="button">Edit</button>
+                <button type="button">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
 
-    <footer>
-        <p>&copy; 2026 SIMPUS-Mini &mdash; Jobsheet 1</p>
-    </footer>
+  <footer>
+    <p>&copy; 2026 SIMPUS-Mini &mdash; Jobsheet 1</p>
+  </footer>
+
 </body>
 </html>

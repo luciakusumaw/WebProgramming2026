@@ -34,10 +34,33 @@ header h1 {
   font-size: 1.4rem;
 }
 
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle-label {
+  display: block;
+  font-size: 1.6rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+header nav {
+  display: none;
+  width: 100%;
+  order: 3;
+  margin-top: 1rem;
+}
+
+.nav-toggle:checked ~ nav {
+  display: block;
+}
+
 header nav ul {
   list-style: none;
   display: flex;
-  gap: 1.25rem;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 header nav a {
@@ -64,9 +87,10 @@ section h2 {
   color: #1b5e20;
 }
 
-main section:nth-of-type(2) {
+main section:nth-of-type(2),
+.stats-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   gap: 1rem;
 }
 
@@ -91,6 +115,10 @@ main section:nth-of-type(2) article p {
   font-size: 1.8rem;
   font-weight: 700;
   color: #1b5e20;
+}
+
+.table-responsive {
+  overflow-x: auto;
 }
 
 table {
@@ -155,7 +183,7 @@ form label {
 form input,
 form select {
   width: 100%;
-  max-width: 400px;
+  max-width: 100%;
   padding: 0.55rem 0.7rem;
   border: 1px solid #cdd4da;
   border-radius: 4px;
@@ -170,6 +198,7 @@ form button[type="submit"] {
   border-radius: 4px;
   font-size: 1rem;
   cursor: pointer;
+  width: 100%;
 }
 
 form button[type="submit"]:hover {
@@ -181,4 +210,43 @@ footer {
   padding: 1.25rem;
   color: #7a8794;
   font-size: 0.9rem;
+}
+
+@media (min-width: 481px) {
+  .nav-toggle-label {
+    display: none;
+  }
+
+  header nav {
+    display: block;
+    width: auto;
+    order: unset;
+    margin-top: 0;
+  }
+
+  header nav ul {
+    flex-direction: row;
+    gap: 1.25rem;
+  }
+
+  main section:nth-of-type(2),
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  form input,
+  form select {
+    max-width: 400px;
+  }
+
+  form button[type="submit"] {
+    width: auto;
+  }
+}
+
+@media (min-width: 769px) {
+  main section:nth-of-type(2),
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
