@@ -24,6 +24,8 @@ function initDeleteConfirm() {
 }
 
 function initTableFilter() {
+  if (typeof initBookSearch === "function") return;
+
   const input = document.getElementById("search-input");
   const table = document.querySelector(".table-responsive table");
 

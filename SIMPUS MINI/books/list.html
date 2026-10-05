@@ -13,7 +13,6 @@
         <a href="../index.html">SIMPUS-Mini</a>
       </div>
 
-     
       <button type="button" id="nav-toggle-btn" class="nav-toggle-label" aria-label="Menu">&#9776;</button>
 
       <nav>
@@ -37,6 +36,9 @@
       <input type="text" id="search-input" placeholder="Type a book title...">
     </div>
 
+  
+    <p id="loading-indicator" style="display: none;">Loading data...</p>
+
     <div class="table-responsive">
       <table>
         <thead>
@@ -49,61 +51,6 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Bumi Manusia</td>
-            <td>Pramoedya Ananta Toer</td>
-            <td>1980</td>
-            <td>2</td>
-            <td>
-              <button type="button">Edit</button>
-        
-              <button type="button" class="btn-delete">Delete</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Negeri 5 Menara</td>
-            <td>Ahmad Fuadi</td>
-            <td>2009</td>
-            <td>0</td>
-            <td>
-              <button type="button">Edit</button>
-         
-              <button type="button" class="btn-delete">Delete</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Filosofi Teras</td>
-            <td>Henry Manampiring</td>
-            <td>2018</td>
-            <td>5</td>
-            <td>
-              <button type="button">Edit</button>
-          
-              <button type="button" class="btn-delete">Delete</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Ronggeng Dukuh Paruk</td>
-            <td>Ahmad Tohari</td>
-            <td>1982</td>
-            <td>1</td>
-            <td>
-              <button type="button">Edit</button>
-    
-              <button type="button" class="btn-delete">Delete</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Laskar Pelangi</td>
-            <td>Andrea Hirata</td>
-            <td>2005</td>
-            <td>4</td>
-            <td>
-              <button type="button">Edit</button>
-            
-              <button type="button" class="btn-delete">Delete</button>
-            </td>
-          </tr>
         </tbody>
       </table>
     </div>
@@ -115,7 +62,8 @@
     </div>
   </footer>
 
-
   <script src="../assets/js/app.js"></script>
+ 
+  <script src="../assets/js/books.js"></script>
 </body>
 </html>
