@@ -4,7 +4,6 @@ include __DIR__ . '/../includes/header.php';
 
 $old = $_SESSION['old_input'] ?? [];
 unset($_SESSION['old_input']);
-
 ?>
 
 <h2>Add New Book</h2>
@@ -20,27 +19,29 @@ unset($_SESSION['old_input']);
 
 <form action="proses_tambah.php" method="POST" class="form-container">
   <div class="form-group">
-    <label for="judul">Book Title</label>
-  
+    <label for="judul">Book Title *</label>
     <input type="text" id="judul" name="judul" value="<?php echo htmlspecialchars($old['judul'] ?? ''); ?>" required>
   </div>
 
   <div class="form-group">
-    <label for="penulis">Author</label>
-   
+    <label for="penulis">Author *</label>
     <input type="text" id="penulis" name="penulis" value="<?php echo htmlspecialchars($old['penulis'] ?? ''); ?>" required>
   </div>
 
   <div class="form-group">
-    <label for="tahun">Year of Publication</label>
-
+    <label for="tahun">Year of Publication *</label>
     <input type="number" id="tahun" name="tahun" value="<?php echo htmlspecialchars($old['tahun'] ?? ''); ?>" required>
   </div>
 
   <div class="form-group">
-    <label for="penerbit">Publisher</label>
-  
+    <label for="penerbit">Publisher *</label>
     <input type="text" id="penerbit" name="penerbit" value="<?php echo htmlspecialchars($old['penerbit'] ?? ''); ?>" required>
+  </div>
+
+  <div class="form-group">
+    <label for="isbn">ISBN (Optional)</label>
+    <input type="text" id="isbn" name="isbn" placeholder="Contoh: 978-602-03-8829-8" value="<?php echo htmlspecialchars($old['isbn'] ?? ''); ?>">
+    <small>Hanya boleh angka dan tanda hubung (-)</small>
   </div>
 
   <button type="submit" class="btn btn-primary">Save Book</button>

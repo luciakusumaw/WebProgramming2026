@@ -1,20 +1,22 @@
 <?php
 $page_title = "Book List";
 include __DIR__ . '/../includes/header.php';
+require_once __DIR__ . '/../config/database.php';
 
-$buku_list = $_SESSION['buku'] ?? [];
+$query = "SELECT id, judul, penulis, tahun, penerbit FROM books ORDER BY id DESC";
+$result = mysqli_query($conn, $query);
+
+$buku_list = [];
+if ($result) {
+  while ($row = mysqli_fetch_assoc($result)) {
+    $buku_list[] = $row;
+  }
+}
 ?>
 
 <div class="page-header">
-  <h2>Book List</h2>
-  <div>
-    <a href="add.php" class="btn btn-primary">+ Add Book</a>
-
-    <?php if (!empty($buku_list)): ?>
-      <a href="reset.php" class="btn btn-danger" onclick="return confirm('Yakin ingin mereset seluruh data buku?');">Reset Data</a>
-    <?php endif; ?>
-  
-  </div>
+  <h2>Book List (Database)</h2>
+  <a href="add.php" class="btn btn-primary">+ Add Book</a>
 </div>
 
 <?php if (isset($_SESSION['flash_success'])): ?>
@@ -27,7 +29,7 @@ $buku_list = $_SESSION['buku'] ?? [];
 <?php endif; ?>
 
 <?php if (empty($buku_list)): ?>
-  <p class="empty-state">No books available in the session. Click "+ Add Book" to add one.</p>
+  <p class="empty-state">Belum ada data buku di database. Klik "+ Add Book" untuk menambahkan.</p>
 <?php else: ?>
   <table class="data-table">
     <thead>
@@ -37,6 +39,7 @@ $buku_list = $_SESSION['buku'] ?? [];
         <th>Author</th>
         <th>Year</th>
         <th>Publisher</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -47,6 +50,10 @@ $buku_list = $_SESSION['buku'] ?? [];
           <td><?php echo htmlspecialchars($buku['penulis']); ?></td>
           <td><?php echo htmlspecialchars($buku['tahun']); ?></td>
           <td><?php echo htmlspecialchars($buku['penerbit']); ?></td>
+          <td>
+            <a href="edit.php?id=<?php echo urlencode($buku['id']); ?>" class="btn btn-sm btn-secondary">Edit</a>
+            <a href="hapus.php?id=<?php echo urlencode($buku['id']); ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus buku ini?');">Delete</a>
+          </td>
         </tr>
       <?php endforeach; ?>
     </tbody>
