@@ -1,38 +1,34 @@
 <?php
 session_start();
-require __DIR__ . '/../includes/connection.php';
+require_once __DIR__ . '/../includes/connection.php';
 
-$name = trim($_POST['name'] ?? '');
-$memberId = trim($_POST['member_id'] ?? '');
-$address = trim($_POST['address'] ?? '');
-$phone = trim($_POST['phone'] ?? '');
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name      = $_POST['name'] ?? '';
+    $memberId  = $_POST['member_id'] ?? '';
+    $address   = $_POST['address'] ?? '';
+    $phone     = $_POST['phone'] ?? '';
 
-$errors = [];
-if ($name === '') {
-    $errors[] = "Name is required.";
+    try {
+        $stmt = $pdo->prepare(
+            "INSERT INTO members (name, member_id, address, phone)
+             VALUES (:name, :member_id, :address, :phone)"
+        );
+        $stmt->execute([
+            'name'      => $name,
+            'member_id' => $memberId,
+            'address'   => $address,
+            'phone'     => $phone
+        ]);
+        $_SESSION['flash'] = ['type' => 'success', 'message' => 'Member added successfully.'];
+        header('Location: list.php');
+        exit;
+    } catch (PDOException $e) {
+        if ($e->getCode() == '23505') {
+            $_SESSION['flash'] = ['type' => 'error', 'message' => 'No. Member sudah dipakai, gunakan nomor lain.'];
+        } else {
+            $_SESSION['flash'] = ['type' => 'error', 'message' => 'Terjadi kesalahan database: ' . $e->getMessage()];
+        }
+        header('Location: add.php');
+        exit;
+    }
 }
-if ($memberId === '') {
-    $errors[] = "Member ID is required.";
-}
-
-if (!empty($errors)) {
-    $_SESSION['flash'] = ['type' => 'error', 'message' => implode(' ', $errors)];
-    header('Location: add.php');
-    exit;
-}
-
-$stmt = $pdo->prepare(
-    "INSERT INTO members (name, member_id, address, phone)
-     VALUES (:name, :member_id, :address, :phone)
-     RETURNING id"
-);
-$stmt->execute([
-    'name' => $name,
-    'member_id' => $memberId,
-    'address' => $address,
-    'phone' => $phone,
-]);
-
-$_SESSION['flash'] = ['type' => 'success', 'message' => 'Member added successfully.'];
-header('Location: list.php');
-exit;
